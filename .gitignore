@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.venv/
+venv/
+ENV/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Ambiente / segredos locais
+.env
+.env.*
+!.env.example
+
+# IDEs / OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Logs e temporários
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# Testes / cobertura
+.coverage
+htmlcov/
+.tox/
+
+# Docker / local
+*.local

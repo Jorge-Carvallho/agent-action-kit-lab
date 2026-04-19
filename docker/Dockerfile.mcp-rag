@@ -1,0 +1,33 @@
+# Servidor MCP RAG (SSE) — base mock em data/, matcher em mcp_rag/.
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY docker/requirements.txt /tmp/requirements-docker.txt
+RUN pip install --upgrade pip setuptools wheel \
+    && pip install -r /tmp/requirements-docker.txt
+
+COPY mcp_rag/ /app/mcp_rag/
+COPY data/ /app/data/
+
+RUN groupadd --gid 10002 labrag \
+    && useradd --uid 10002 --gid labrag --no-create-home --shell /usr/sbin/nologin labrag \
+    && chown -R labrag:labrag /app
+
+USER labrag
+
+EXPOSE 3200
+
+HEALTHCHECK --interval=20s --timeout=5s --start-period=20s --retries=5 \
+    CMD curl -fsS "http://127.0.0.1:3200/health" >/dev/null || exit 1
+
+CMD ["python", "-m", "mcp_rag"]

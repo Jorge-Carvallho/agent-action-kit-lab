@@ -1,0 +1,71 @@
+# Evidências de terminal (fictício — sem dados clínicos reais)
+#
+# Parte 3 (AI-016): trechos abaixo foram reproduzidos na raiz do clone com
+# venv activo e `pip install -r requirements.txt`. Pequenas diferenças
+# (versões Python/pacotes) são normais. Com Docker no ar, os `curl` de /health
+# devem devolver JSON semelhante aos exemplos comentados no fim do ficheiro.
+
+# =============================================================================
+# Transpilador — validação do spec
+# =============================================================================
+# $ python transpiler/validate_spec.py examples/agent_spec.json
+#
+# ✓ JSON de especificação válido.
+
+# =============================================================================
+# CLI — modo offline + dry-run (sem MCP nem POST na API)
+# Comando: python run_lab_cli.py examples/sample_prescription.png --offline --dry-run
+# =============================================================================
+#
+# === Fluxo laboratorial (demonstração fictícia) ===
+# Imagem: <raiz-do-clone>/examples/sample_prescription.png
+# Backend: local (sem servidores MCP)
+# Motor OCR: demo
+# Nota OCR: Tesseract/Pillow indisponível, OCR vazio ou sem linhas úteis — lista fictícia (OCR_DEMO_EXAMS_JSON).
+#
+# — Exames (candidatos do OCR) —
+#   1. Hemograma completo
+#   2. Glicemia em jejum
+#   3. Perfil lipídico
+#
+# — RAG (códigos na base mock) —
+#   • 'Hemograma completo' → LAB-F0001 | Hemograma completo (high)
+#   • 'Glicemia em jejum' → LAB-F0003 | Glicemia em jejum (high)
+#   • 'Perfil lipídico' → LAB-F0008 | Perfil lipídico completo (high)
+#
+# — Agendamento (API FastAPI fictícia) —
+#   (pedido não enviado)
+#
+# === Fim ===
+
+# =============================================================================
+# Suíte de testes (trecho final)
+# Comando: python run_tests.py
+# =============================================================================
+#
+# ----------------------------------------------------------------------
+# Ran 72 tests in ~2s
+#
+# OK
+
+# =============================================================================
+# Docker Compose no ar — health (exemplos ilustrativos; requer: docker compose up -d)
+# =============================================================================
+#
+# $ curl -s http://127.0.0.1:8000/health
+# {"status":"ok","service":"lab-scheduling-api"}
+#
+# $ curl -s http://127.0.0.1:3100/health
+# {"status":"ok","service":"mcp_ocr","transport":"sse"}
+#
+# $ curl -s http://127.0.0.1:3200/health
+# {"status":"ok","service":"mcp_rag",...}
+#
+# $ docker compose ps
+# NAME          IMAGE                         STATUS
+# lab-api       agent-action-kit-api:local    Up
+# lab-mcp-ocr   ...                           Up
+# lab-mcp-rag   ...                           Up
+
+# Se os curl falharem com "Connection refused", a stack não está a escutar
+# nas portas 8000/3100/3200 — subir com `docker compose up -d --build`.

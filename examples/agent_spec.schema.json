@@ -1,0 +1,188 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.local/schemas/agent_spec.schema.json",
+  "title": "AgentSpecification",
+  "description": "Contrato de entrada do transpilador: gera código Python que instancia um agente Google ADK.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spec_version",
+    "agent",
+    "mcp_servers",
+    "scheduling_api",
+    "security",
+    "cli"
+  ],
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "description": "Versão do contrato (o transpilador rejeita versões desconhecidas).",
+      "pattern": "^1\\.0$"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Metadados opcionais (autor, descrição, tags) — ignorados pelo runtime.",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "app_name", "model", "profile"],
+      "description": "Identidade e instrução do agente ADK (alinhado a RuntimeConfig / Agent).",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nome interno do agente ADK (ex.: lab_scheduler)."
+        },
+        "app_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "app_name do Runner (ex.: lab_exam_scheduler_kit)."
+        },
+        "model": {
+          "type": "string",
+          "description": "Modelo Gemini (ex.: gemini-2.5-flash)."
+        },
+        "profile": {
+          "type": "string",
+          "enum": ["lab", "generic"],
+          "description": "Perfil de contexto; mapeia prompts e convenções do kit (equivalente a AGENT_ACTION)."
+        },
+        "instruction": {
+          "type": "string",
+          "description": "Instrução do sistema (inline). Se omitido, usar instruction_key."
+        },
+        "instruction_key": {
+          "type": "string",
+          "description": "Chave para resolver o prompt (ex.: módulo em prompts/). Obrigatório se instruction ausente."
+        }
+      },
+      "oneOf": [
+        { "required": ["instruction"] },
+        { "required": ["instruction_key"] }
+      ]
+    },
+    "tools": {
+      "type": "array",
+      "description": "Declaração de ferramentas que o transpilador liga ao agente (MCP, HTTP, etc.).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind"],
+        "properties": {
+          "id": { "type": "string", "description": "Identificador único no código gerado." },
+          "kind": {
+            "type": "string",
+            "enum": ["mcp_sse", "http_json"],
+            "description": "Tipo de integração."
+          },
+          "mcp_role": {
+            "type": "string",
+            "enum": ["ocr", "rag"],
+            "description": "Obrigatório se kind=mcp_sse: qual servidor em mcp_servers."
+          },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "mcp_servers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ocr", "rag"],
+      "description": "Endpoints SSE dos servidores MCP (desafio: comunicação exclusivamente SSE).",
+      "properties": {
+        "ocr": { "$ref": "#/definitions/mcpSseEndpoint" },
+        "rag": { "$ref": "#/definitions/mcpSseEndpoint" }
+      }
+    },
+    "scheduling_api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base_url"],
+      "description": "API FastAPI fictícia de agendamentos consumida pelo agente.",
+      "properties": {
+        "base_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL base (ex.: http://api:8000)."
+        },
+        "create_path": {
+          "type": "string",
+          "minLength": 1,
+          "default": "/api/v1/appointments",
+          "description": "Path para criar pedido de agendamento (deve coincidir com o Swagger)."
+        },
+        "health_path": {
+          "type": "string",
+          "default": "/health",
+          "description": "Path opcional para health check."
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pii"],
+      "description": "Regras de segurança (PII antes de LLM e persistência).",
+      "properties": {
+        "pii": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "apply_before_llm", "apply_before_persist"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "apply_before_llm": {
+              "type": "boolean",
+              "description": "Mascarar antes de enviar ao modelo."
+            },
+            "apply_before_persist": {
+              "type": "boolean",
+              "description": "Mascarar antes de gravar em disco/DB."
+            },
+            "note": {
+              "type": "string",
+              "description": "Notas para implementação (ex.: categorias de dados sensíveis)."
+            }
+          }
+        }
+      }
+    },
+    "cli": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["output_mode"],
+      "description": "Modo de saída no terminal.",
+      "properties": {
+        "output_mode": {
+          "type": "string",
+          "enum": ["human", "json"],
+          "description": "human: texto legível; json: JSON para automação."
+        }
+      }
+    }
+  },
+  "definitions": {
+    "mcpSseEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sse_url"],
+      "properties": {
+        "sse_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL SSE do servidor MCP (ex.: http://mcp-ocr:9000/sse)."
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "minimum": 1,
+          "default": 120
+        }
+      }
+    }
+  }
+}

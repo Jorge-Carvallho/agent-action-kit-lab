@@ -1,0 +1,69 @@
+# Orquestração local — API + MCP OCR + MCP RAG (AI-014).
+# Uso: docker compose up -d --build
+# Saúde: docker compose ps && curl -s localhost:8000/health
+#
+# Portas no host: LAB_API_HOST_PORT, MCP_OCR_HOST_PORT, MCP_RAG_HOST_PORT (omissões 8000/3100/3200).
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    image: agent-action-kit-api:local
+    container_name: lab-api
+    restart: unless-stopped
+    ports:
+      - "${LAB_API_HOST_PORT:-8000}:8000"
+    environment:
+      SCHEDULING_API_HOST: "0.0.0.0"
+      SCHEDULING_API_PORT: "8000"
+    networks:
+      - lab
+
+  mcp-ocr:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mcp-ocr
+    image: agent-action-kit-mcp-ocr:local
+    container_name: lab-mcp-ocr
+    restart: unless-stopped
+    ports:
+      - "${MCP_OCR_HOST_PORT:-3100}:3100"
+    environment:
+      MCP_OCR_HOST: "0.0.0.0"
+      MCP_OCR_PORT: "3100"
+    networks:
+      - lab
+
+  mcp-rag:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mcp-rag
+    image: agent-action-kit-mcp-rag:local
+    container_name: lab-mcp-rag
+    restart: unless-stopped
+    ports:
+      - "${MCP_RAG_HOST_PORT:-3200}:3200"
+    environment:
+      MCP_RAG_HOST: "0.0.0.0"
+      MCP_RAG_PORT: "3200"
+    networks:
+      - lab
+
+  # Validação do JSON (transpiler) — compose --profile tools up validate-spec
+  validate-spec:
+    profiles:
+      - tools
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.transpiler
+    image: agent-action-kit-validate-spec:local
+    container_name: lab-validate-spec
+    networks:
+      - lab
+    restart: "no"
+
+networks:
+  lab:
+    name: agent-action-kit_lab
+    driver: bridge

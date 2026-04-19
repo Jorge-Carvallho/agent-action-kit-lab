@@ -1,0 +1,15 @@
+# Build rápido e imagens mais pequenas
+.git
+.github
+.venv
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+*.md
+!README.md
+.cursor
+.idea
+*.log
+terminals
+HD
+Downloads

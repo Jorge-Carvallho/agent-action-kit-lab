@@ -1,0 +1,8 @@
+# Dependências para as imagens Docker: API, MCP OCR e MCP RAG.
+# Uma única lista — cada contentor instala o mesmo conjunto (imagens um pouco maiores, manutenção mais simples).
+fastapi>=0.115.0,<1
+uvicorn[standard]>=0.32.0,<1
+mcp>=1.18.0,<2
+httpx>=0.27.0,<1
+Pillow>=10.0.0,<13
+pytesseract>=0.3.10,<1

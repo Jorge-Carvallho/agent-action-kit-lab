@@ -1,0 +1,2 @@
+# Transporte MCP (SSE / FastMCP) — alinhar à stack do projeto (google-adk / mcp)
+# Instalação típica na raiz do venv que já inclui `mcp`.

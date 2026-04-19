@@ -1,0 +1,1272 @@
+{
+  "schema_version": 1,
+  "catalog_id": "mock-lab-exams-v1",
+  "description": "Base fictícia para RAG no desafio laboratorial (≥100 exames).",
+  "record_count": 164,
+  "exams": [
+    {
+      "code": "LAB-F0001",
+      "name": "Hemograma completo",
+      "short_description": "Contagem de séries vermelha, branca e plaquetas.",
+      "synonyms": [
+        "HMG",
+        "hemograma"
+      ]
+    },
+    {
+      "code": "LAB-F0002",
+      "name": "Hemograma sem revisão de plaquetas",
+      "short_description": "Séries vermelha e branca; plaquetas não diferenciadas.",
+      "synonyms": [
+        "HMG s/ plaquet"
+      ]
+    },
+    {
+      "code": "LAB-F0003",
+      "name": "Glicemia em jejum",
+      "short_description": "Glucose plasmática após jejum de 8–12 h.",
+      "synonyms": [
+        "glicose jejum",
+        "GLI jejum"
+      ]
+    },
+    {
+      "code": "LAB-F0004",
+      "name": "Hemoglobina glicada (HbA1c)",
+      "short_description": "Média glicêmica dos últimos ~3 meses.",
+      "synonyms": [
+        "A1c",
+        "HbA1c"
+      ]
+    },
+    {
+      "code": "LAB-F0005",
+      "name": "Creatinina sérica",
+      "short_description": "Filtração renal (marcador).",
+      "synonyms": [
+        "creat",
+        "CRE"
+      ]
+    },
+    {
+      "code": "LAB-F0006",
+      "name": "Ureia sérica",
+      "short_description": "Função renal e estado hipertonicidade.",
+      "synonyms": [
+        "URE"
+      ]
+    },
+    {
+      "code": "LAB-F0007",
+      "name": "Ácido úrico sérico",
+      "short_description": "Metabolismo de purinas.",
+      "synonyms": [
+        "AU"
+      ]
+    },
+    {
+      "code": "LAB-F0008",
+      "name": "Perfil lipídico completo",
+      "short_description": "Colesterol, frações e triglicerídeos.",
+      "synonyms": [
+        "lipídios",
+        "perfil lipídico"
+      ]
+    },
+    {
+      "code": "LAB-F0009",
+      "name": "Colesterol total",
+      "short_description": "Parte do perfil lipídico.",
+      "synonyms": [
+        "COL"
+      ]
+    },
+    {
+      "code": "LAB-F0010",
+      "name": "HDL-colesterol",
+      "short_description": "Colesterol 'bom'.",
+      "synonyms": [
+        "HDL"
+      ]
+    },
+    {
+      "code": "LAB-F0011",
+      "name": "LDL-colesterol",
+      "short_description": "Colesterol 'mau' (calculado/medido).",
+      "synonyms": [
+        "LDL"
+      ]
+    },
+    {
+      "code": "LAB-F0012",
+      "name": "Triglicerídeos",
+      "short_description": "Lipídeos circulantes.",
+      "synonyms": [
+        "TG",
+        "triglicerideos"
+      ]
+    },
+    {
+      "code": "LAB-F0013",
+      "name": "Aspartato aminotransferase (TGO/AST)",
+      "short_description": "Enzima hepática/cardíaca.",
+      "synonyms": [
+        "AST",
+        "TGO"
+      ]
+    },
+    {
+      "code": "LAB-F0014",
+      "name": "Alanina aminotransferase (TGP/ALT)",
+      "short_description": "Enzima hepática.",
+      "synonyms": [
+        "ALT",
+        "TGP"
+      ]
+    },
+    {
+      "code": "LAB-F0015",
+      "name": "Fosfatase alcalina",
+      "short_description": "Vias biliares e osso.",
+      "synonyms": [
+        "FA",
+        "fosfatase alcal"
+      ]
+    },
+    {
+      "code": "LAB-F0016",
+      "name": "Gama-glutamil transferase (GGT)",
+      "short_description": "Consumo de álcool e obstrução biliar.",
+      "synonyms": [
+        "GGT"
+      ]
+    },
+    {
+      "code": "LAB-F0017",
+      "name": "Bilirrubinas totais e frações",
+      "short_description": "Função hepática.",
+      "synonyms": [
+        "BILI",
+        "bilirrubina"
+      ]
+    },
+    {
+      "code": "LAB-F0018",
+      "name": "Proteínas totais e frações",
+      "short_description": "Estado nutricional e hepático.",
+      "synonyms": [
+        "PT",
+        "eletroforese proteínas"
+      ]
+    },
+    {
+      "code": "LAB-F0019",
+      "name": "Albumina sérica",
+      "short_description": "Transporte e pressão oncótica.",
+      "synonyms": [
+        "ALB"
+      ]
+    },
+    {
+      "code": "LAB-F0020",
+      "name": "Cálcio total",
+      "short_description": "Metabolismo mineral.",
+      "synonyms": [
+        "Ca"
+      ]
+    },
+    {
+      "code": "LAB-F0021",
+      "name": "Cálcio iônico",
+      "short_description": "Fracção biologicamente activa.",
+      "synonyms": [
+        "Ca ionico"
+      ]
+    },
+    {
+      "code": "LAB-F0022",
+      "name": "Fósforo inorgânico",
+      "short_description": "Metabolismo ósseo/renal.",
+      "synonyms": [
+        "P",
+        "fosforo"
+      ]
+    },
+    {
+      "code": "LAB-F0023",
+      "name": "Magnésio sérico",
+      "short_description": "Electrolito e enzimas.",
+      "synonyms": [
+        "Mg"
+      ]
+    },
+    {
+      "code": "LAB-F0024",
+      "name": "Sódio sérico",
+      "short_description": "Equilíbrio hidroelectrolítico.",
+      "synonyms": [
+        "Na"
+      ]
+    },
+    {
+      "code": "LAB-F0025",
+      "name": "Potássio sérico",
+      "short_description": "Função renal e muscular.",
+      "synonyms": [
+        "K",
+        "potássio"
+      ]
+    },
+    {
+      "code": "LAB-F0026",
+      "name": "Cloro sérico",
+      "short_description": "Acid-base e osmolaridade.",
+      "synonyms": [
+        "Cl"
+      ]
+    },
+    {
+      "code": "LAB-F0027",
+      "name": "Ferro sérico",
+      "short_description": "Reservas e transporte.",
+      "synonyms": [
+        "Fe"
+      ]
+    },
+    {
+      "code": "LAB-F0028",
+      "name": "Ferritina",
+      "short_description": "Reserva de ferro.",
+      "synonyms": [
+        "FERR"
+      ]
+    },
+    {
+      "code": "LAB-F0029",
+      "name": "Capacidade total de ligação do ferro",
+      "short_description": "Índice de saturação de transferrina.",
+      "synonyms": [
+        "TIBC"
+      ]
+    },
+    {
+      "code": "LAB-F0030",
+      "name": "Índice de saturação de transferrina",
+      "short_description": "Transporte de ferro.",
+      "synonyms": [
+        "IST"
+      ]
+    },
+    {
+      "code": "LAB-F0031",
+      "name": "Vitamina D 25-OH",
+      "short_description": "Metabolismo ósseo e imunitário.",
+      "synonyms": [
+        "vit D",
+        "calcidiol"
+      ]
+    },
+    {
+      "code": "LAB-F0032",
+      "name": "Vitamina B12",
+      "short_description": "Megaloblástico e neuropatias.",
+      "synonyms": [
+        "cobalamina",
+        "B12"
+      ]
+    },
+    {
+      "code": "LAB-F0033",
+      "name": "Ácido fólico",
+      "short_description": "Síntese de DNA e anemias.",
+      "synonyms": [
+        "folato",
+        "folic"
+      ]
+    },
+    {
+      "code": "LAB-F0034",
+      "name": "TSH",
+      "short_description": "Função tireoidiana (eixo hipo-fise).",
+      "synonyms": [
+        "hormonio estimulador tireoide"
+      ]
+    },
+    {
+      "code": "LAB-F0035",
+      "name": "T4 livre",
+      "short_description": "Hormona tireoidiana livre.",
+      "synonyms": [
+        "T4L",
+        "tiroxina livre"
+      ]
+    },
+    {
+      "code": "LAB-F0036",
+      "name": "T3 livre",
+      "short_description": "Tiroano tri-iodo.",
+      "synonyms": [
+        "T3L"
+      ]
+    },
+    {
+      "code": "LAB-F0037",
+      "name": "Anticorpos anti-TPO",
+      "short_description": "Autimunidade tireoidiana.",
+      "synonyms": [
+        "anti-TPO"
+      ]
+    },
+    {
+      "code": "LAB-F0038",
+      "name": "Anticorpos anti-tireoglobulina",
+      "short_description": "Autimunidade tireoidiana.",
+      "synonyms": [
+        "anti-TG"
+      ]
+    },
+    {
+      "code": "LAB-F0039",
+      "name": "Paratormônio intacto (PTH)",
+      "short_description": "Regulação do cálcio.",
+      "synonyms": [
+        "PTH"
+      ]
+    },
+    {
+      "code": "LAB-F0040",
+      "name": "Cortisol basal",
+      "short_description": "Eixo hipotálamo-hipófise-adrenal.",
+      "synonyms": [
+        "cortisol sérico"
+      ]
+    },
+    {
+      "code": "LAB-F0041",
+      "name": "Cortisol salivar (noturno)",
+      "short_description": "Screening hipercortisolismo.",
+      "synonyms": [
+        "cortisol saliva"
+      ]
+    },
+    {
+      "code": "LAB-F0042",
+      "name": "Prolactina",
+      "short_description": "Prolactinemias e investigação de hipófise.",
+      "synonyms": [
+        "PRL"
+      ]
+    },
+    {
+      "code": "LAB-F0043",
+      "name": "Testosterona total",
+      "short_description": "Andrógenos e fertilidade.",
+      "synonyms": [
+        "testo"
+      ]
+    },
+    {
+      "code": "LAB-F0044",
+      "name": "Testosterona livre",
+      "short_description": "Fracção biodisponível.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0045",
+      "name": "Estradiol",
+      "short_description": "Eixo hormonal feminino.",
+      "synonyms": [
+        "E2"
+      ]
+    },
+    {
+      "code": "LAB-F0046",
+      "name": "Progesterona",
+      "short_description": "Fase lútea e gravidez.",
+      "synonyms": [
+        "P4"
+      ]
+    },
+    {
+      "code": "LAB-F0047",
+      "name": "LH",
+      "short_description": "Função gonadal.",
+      "synonyms": [
+        "hormonio luteinizante"
+      ]
+    },
+    {
+      "code": "LAB-F0048",
+      "name": "FSH",
+      "short_description": "Reserva ovariana / espermograma relacionado.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0049",
+      "name": "PSA total",
+      "short_description": "Rastreio e seguimento próstata.",
+      "synonyms": [
+        "antígeno prostático"
+      ]
+    },
+    {
+      "code": "LAB-F0050",
+      "name": "PSA livre",
+      "short_description": "Rácio com PSA total.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0051",
+      "name": "SHBG",
+      "short_description": "Transporte de hormonas sexuais.",
+      "synonyms": [
+        "globulina ligadora"
+      ]
+    },
+    {
+      "code": "LAB-F0052",
+      "name": "Cortisol livre urinário 24h",
+      "short_description": "Hipercortisolismo.",
+      "synonyms": [
+        "cortisol urina"
+      ]
+    },
+    {
+      "code": "LAB-F0053",
+      "name": "DHEA-S",
+      "short_description": "Andrógeno adrenal.",
+      "synonyms": [
+        "S-DHEA"
+      ]
+    },
+    {
+      "code": "LAB-F0054",
+      "name": "Insulina basal",
+      "short_description": "Resistência insulínica.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0055",
+      "name": "Peptídeo C",
+      "short_description": "Insulinose e hipoglicemias.",
+      "synonyms": [
+        "peptideo C"
+      ]
+    },
+    {
+      "code": "LAB-F0056",
+      "name": "Índice HOMA-IR",
+      "short_description": "Resistência à insulina estimada.",
+      "synonyms": [
+        "HOMA"
+      ]
+    },
+    {
+      "code": "LAB-F0057",
+      "name": "Tiroglobulina",
+      "short_description": "Cancro da tiróide (seguimento).",
+      "synonyms": [
+        "Tg"
+      ]
+    },
+    {
+      "code": "LAB-F0058",
+      "name": "Calcitonina",
+      "short_description": "Medular de tiróide.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0059",
+      "name": "CEA",
+      "short_description": "Marcador tumoral digestivo (contexto).",
+      "synonyms": [
+        "antígeno carcinoembriónico"
+      ]
+    },
+    {
+      "code": "LAB-F0060",
+      "name": "CA 19-9",
+      "short_description": "Tracto digestivo / pâncreas.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0061",
+      "name": "CA 125",
+      "short_description": "Investigação pélvica / ovarian.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0062",
+      "name": "CA 15-3",
+      "short_description": "Seguimento mama.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0063",
+      "name": "AFP",
+      "short_description": "Hepatopatias e tumores.",
+      "synonyms": [
+        "alfa-fetoproteina"
+      ]
+    },
+    {
+      "code": "LAB-F0064",
+      "name": "Beta-HCG quantitativo",
+      "short_description": "Gravidez e tumores germinativos.",
+      "synonyms": [
+        "beta hCG"
+      ]
+    },
+    {
+      "code": "LAB-F0065",
+      "name": "IGF-1",
+      "short_description": "Eixo do crescimento (hipófise).",
+      "synonyms": [
+        "somatomedina C"
+      ]
+    },
+    {
+      "code": "LAB-F0066",
+      "name": "Vitamina B1",
+      "short_description": "Estado nutricional.",
+      "synonyms": [
+        "tiamina"
+      ]
+    },
+    {
+      "code": "LAB-F0067",
+      "name": "Vitamina B6",
+      "short_description": "Cofactor metabólico.",
+      "synonyms": [
+        "piridoxina"
+      ]
+    },
+    {
+      "code": "LAB-F0068",
+      "name": "Vitamina C",
+      "short_description": "Antioxidante (plasma).",
+      "synonyms": [
+        "ácido ascórbico"
+      ]
+    },
+    {
+      "code": "LAB-F0069",
+      "name": "Perfil de ácidos gordos",
+      "short_description": "Cardiovascular e metabólico.",
+      "synonyms": [
+        "ácidos gordos"
+      ]
+    },
+    {
+      "code": "LAB-F0070",
+      "name": "Zinco sérico",
+      "short_description": "Trace metais.",
+      "synonyms": [
+        "Zn"
+      ]
+    },
+    {
+      "code": "LAB-F0071",
+      "name": "Cobre sérico",
+      "short_description": "Metabolismo e depósitos.",
+      "synonyms": [
+        "Cu"
+      ]
+    },
+    {
+      "code": "LAB-F0072",
+      "name": "Selénio",
+      "short_description": "Antioxidante.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0073",
+      "name": "Homocisteína",
+      "short_description": "Risco cardiovascular e B12/folato.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0074",
+      "name": "PCR ultrasensível",
+      "short_description": "Inflamação de baixo grau.",
+      "synonyms": [
+        "us-CRP",
+        "PCR-us"
+      ]
+    },
+    {
+      "code": "LAB-F0075",
+      "name": "Proteína C reativa",
+      "short_description": "Inflamação aguda.",
+      "synonyms": [
+        "PCR"
+      ]
+    },
+    {
+      "code": "LAB-F0076",
+      "name": "VHS (velocidade de sedimentação)",
+      "short_description": "Inflamação inespecífica.",
+      "synonyms": [
+        "VS",
+        "hemosedimentação"
+      ]
+    },
+    {
+      "code": "LAB-F0077",
+      "name": "Fibrinogénio",
+      "short_description": "Coagulação e inflamação.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0078",
+      "name": "D-dímero",
+      "short_description": "Trombose/embolia (contexto clínico).",
+      "synonyms": [
+        "D dimero"
+      ]
+    },
+    {
+      "code": "LAB-F0079",
+      "name": "Tempo de protrombina (INR)",
+      "short_description": "Via extrínseca / anticoagulação.",
+      "synonyms": [
+        "TP",
+        "RNI",
+        "INR"
+      ]
+    },
+    {
+      "code": "LAB-F0080",
+      "name": "TTPA (APTT)",
+      "short_description": "Via intrínseca.",
+      "synonyms": [
+        "APTT",
+        "caolina"
+      ]
+    },
+    {
+      "code": "LAB-F0081",
+      "name": "Antitrombina III",
+      "short_description": "Deficiência hereditária / terapia.",
+      "synonyms": [
+        "AT III"
+      ]
+    },
+    {
+      "code": "LAB-F0082",
+      "name": "Fator VIII",
+      "short_description": "Hemofilia A (investigação).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0083",
+      "name": "Fibrinólise (euglobulinas)",
+      "short_description": "Perfil de lise.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0084",
+      "name": "Grupo ABO-Rh",
+      "short_description": "Tipagem eritrocitária.",
+      "synonyms": [
+        "grupo sanguineo",
+        "tipagem ABO"
+      ]
+    },
+    {
+      "code": "LAB-F0085",
+      "name": "Combs indirecto (AI)",
+      "short_description": "Anticorpos irregulares (pré-transfusão).",
+      "synonyms": [
+        "anticorpo irreg"
+      ]
+    },
+    {
+      "code": "LAB-F0086",
+      "name": "Painel de imuno-hematológico",
+      "short_description": "Estudo pós reacção transfusional.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0087",
+      "name": "HBsAg",
+      "short_description": "Hepatite B — antigénio de superfície.",
+      "synonyms": [
+        "AgHBs"
+      ]
+    },
+    {
+      "code": "LAB-F0088",
+      "name": "Anti-HBs",
+      "short_description": "Vacinação / imunidade HBV.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0089",
+      "name": "Anti-HBc total",
+      "short_description": "Exposição ao VHB.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0090",
+      "name": "HBV DNA quantitativo",
+      "short_description": "Carga viral hepatite B.",
+      "synonyms": [
+        "HBV viral load"
+      ]
+    },
+    {
+      "code": "LAB-F0091",
+      "name": "Anti-HCV",
+      "short_description": "Hepatite C — anticorpos.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0092",
+      "name": "HCV RNA quantitativo",
+      "short_description": "Carga viral hepatite C.",
+      "synonyms": [
+        "HCV viral load"
+      ]
+    },
+    {
+      "code": "LAB-F0093",
+      "name": "HIV 1/2 (antígeno + anticorpos)",
+      "short_description": "Rastreio VIH.",
+      "synonyms": [
+        "HIV combo"
+      ]
+    },
+    {
+      "code": "LAB-F0094",
+      "name": "HIV carga viral",
+      "short_description": "Seguimento terapêutico.",
+      "synonyms": [
+        "HIV RNA"
+      ]
+    },
+    {
+      "code": "LAB-F0095",
+      "name": "VDRL/FTA-abs",
+      "short_description": "Sífilis (rastreio e confirmação).",
+      "synonyms": [
+        "sifilis"
+      ]
+    },
+    {
+      "code": "LAB-F0096",
+      "name": "Chlamydia trachomatis PCR",
+      "short_description": "ITS (urina/swab).",
+      "synonyms": [
+        "clamidia"
+      ]
+    },
+    {
+      "code": "LAB-F0097",
+      "name": "Neisseria gonorrhoeae PCR",
+      "short_description": "ITS.",
+      "synonyms": [
+        "gonococo"
+      ]
+    },
+    {
+      "code": "LAB-F0098",
+      "name": "Sorologia CMV IgG/IgM",
+      "short_description": "Citomegalovirus.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0099",
+      "name": "Sorologia toxoplasmose IgG/IgM",
+      "short_description": "Gestação / imunidade.",
+      "synonyms": [
+        "toxo"
+      ]
+    },
+    {
+      "code": "LAB-F0100",
+      "name": "Sorologia rubéola IgG",
+      "short_description": "Imunidade pré-concepcional.",
+      "synonyms": [
+        "rubéola"
+      ]
+    },
+    {
+      "code": "LAB-F0101",
+      "name": "Sorologia Epstein-Barr (VCA)",
+      "short_description": "Mononucleose (contexto).",
+      "synonyms": [
+        "EBV"
+      ]
+    },
+    {
+      "code": "LAB-F0102",
+      "name": "Painel hepatite A IgM",
+      "short_description": "Hepatite A aguda.",
+      "synonyms": [
+        "HAV IgM"
+      ]
+    },
+    {
+      "code": "LAB-F0103",
+      "name": "Painel hepatite E",
+      "short_description": "HEV (viagens/água).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0104",
+      "name": "Sorologia dengue NS1 + IgM",
+      "short_description": "Febre arbovirose.",
+      "synonyms": [
+        "dengue"
+      ]
+    },
+    {
+      "code": "LAB-F0105",
+      "name": "Sorologia Zika vírus",
+      "short_description": "Gestação (contexto clínico).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0106",
+      "name": "Sorologia Chikungunya",
+      "short_description": "Febre exantemática.",
+      "synonyms": [
+        "chikungunya"
+      ]
+    },
+    {
+      "code": "LAB-F0107",
+      "name": "PCR SARS-CoV-2",
+      "short_description": "COVID-19 por amplificação.",
+      "synonyms": [
+        "covid pcr",
+        "coronavirus"
+      ]
+    },
+    {
+      "code": "LAB-F0108",
+      "name": "Anticorpos anti-SARS-CoV-2",
+      "short_description": "Resposta imune pós-exposição/vac.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0109",
+      "name": "PCR vírus respiratório multiplex",
+      "short_description": "Painel vias aéreas.",
+      "synonyms": [
+        "multiplex resp"
+      ]
+    },
+    {
+      "code": "LAB-F0110",
+      "name": "Cultura de urina com antibiograma",
+      "short_description": "ITU e flora.",
+      "synonyms": [
+        "urocultura",
+        "cultura urina"
+      ]
+    },
+    {
+      "code": "LAB-F0111",
+      "name": "Urocultura quantitativa",
+      "short_description": "Contagem de colónias.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0112",
+      "name": "EAS com sedimento urinário",
+      "short_description": "Análise de orina.",
+      "synonyms": [
+        "urina tipo I",
+        "urina rotina"
+      ]
+    },
+    {
+      "code": "LAB-F0113",
+      "name": "Clearance de creatinina (urina 24h)",
+      "short_description": "Depuração renal.",
+      "synonyms": [
+        "clearance cr"
+      ]
+    },
+    {
+      "code": "LAB-F0114",
+      "name": "Proteína urinária 24h",
+      "short_description": "Proteinúria.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0115",
+      "name": "Relação albumina/creatinina urinária",
+      "short_description": "Microalbuminuria.",
+      "synonyms": [
+        "RAC"
+      ]
+    },
+    {
+      "code": "LAB-F0116",
+      "name": "Microalbuminuria",
+      "short_description": "Rins em diabetes/hipertensão.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0117",
+      "name": "Cintilograma óssea (imagem)",
+      "short_description": "Metástases / trauma (referência mock).",
+      "synonyms": [
+        "cintilo ossos"
+      ]
+    },
+    {
+      "code": "LAB-F0118",
+      "name": "Parasitológico de fezes",
+      "short_description": "Parasitas intestinais.",
+      "synonyms": [
+        "PPF",
+        "parasito"
+      ]
+    },
+    {
+      "code": "LAB-F0119",
+      "name": "Pesquisa de sangue oculto (fezes)",
+      "short_description": "Rastreio digestivo.",
+      "synonyms": [
+        "PSOF",
+        "fit test"
+      ]
+    },
+    {
+      "code": "LAB-F0120",
+      "name": "Pesquisa de antigenio H. pylori (fezes)",
+      "short_description": "Gastrite / úlcera.",
+      "synonyms": [
+        "H pylori"
+      ]
+    },
+    {
+      "code": "LAB-F0121",
+      "name": "Coproparasitológico seriado",
+      "short_description": "Múltiplas amostras.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0122",
+      "name": "Sódio e potássio urinários aleatório",
+      "short_description": "Electrolitos urinários.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0123",
+      "name": "Osmolalidade sérica",
+      "short_description": "Hiponatremia / osmolalidade.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0124",
+      "name": "Osmolalidade urinária",
+      "short_description": "Concentração renal.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0125",
+      "name": "Gasometria arterial",
+      "short_description": "Acid-base e oxigenação.",
+      "synonyms": [
+        "gás arterial"
+      ]
+    },
+    {
+      "code": "LAB-F0126",
+      "name": "Gasometria venosa",
+      "short_description": "Acid-base (alternativa).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0127",
+      "name": "Lactato sérico",
+      "short_description": "Choque / hipóxia tissular.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0128",
+      "name": "Bicarbonato sérico",
+      "short_description": "Equilíbrio ácido-base.",
+      "synonyms": [
+        "HCO3"
+      ]
+    },
+    {
+      "code": "LAB-F0129",
+      "name": "Curva de tolerância oral à glicose",
+      "short_description": "Diabetes gestacional/diagnóstico.",
+      "synonyms": [
+        "TOTG",
+        "curva glicose"
+      ]
+    },
+    {
+      "code": "LAB-F0130",
+      "name": "Frutosamina",
+      "short_description": "Controlo glicémico curto prazo.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0131",
+      "name": "Amilase sérica",
+      "short_description": "Pâncreas / salivar.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0132",
+      "name": "Lipase sérica",
+      "short_description": "Pancreatite (contexto).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0133",
+      "name": "CK total (CPK)",
+      "short_description": "Músculo / miocardio.",
+      "synonyms": [
+        "CPK"
+      ]
+    },
+    {
+      "code": "LAB-F0134",
+      "name": "CK-MB",
+      "short_description": "Cardiorriscos (histórico).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0135",
+      "name": "Proteína troponina I/T de alta sensibilidade",
+      "short_description": "Lesão miocárdica.",
+      "synonyms": [
+        "troponina"
+      ]
+    },
+    {
+      "code": "LAB-F0136",
+      "name": "BNP / NT-proBNP",
+      "short_description": "Insuficiência cardíaca.",
+      "synonyms": [
+        "peptideo natriuretico"
+      ]
+    },
+    {
+      "code": "LAB-F0137",
+      "name": "Marcador de necrose miocárdica",
+      "short_description": "Agrupamento perfil cardíaco (mock).",
+      "synonyms": [
+        "perfil cardíaco"
+      ]
+    },
+    {
+      "code": "LAB-F0138",
+      "name": "Hemocultura aeróbia e anaeróbia",
+      "short_description": "Septicémia.",
+      "synonyms": [
+        "hemocultura"
+      ]
+    },
+    {
+      "code": "LAB-F0139",
+      "name": "Cultura de ferida / punção",
+      "short_description": "Infecção local.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0140",
+      "name": "Swab orofaringe (cultura)",
+      "short_description": "Faringite bacteriana.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0141",
+      "name": "PCR vírus ampliado painel meningite",
+      "short_description": "Líquor/vírus (mock).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0142",
+      "name": "Líquor — bioquímica e citologia",
+      "short_description": "Meningite / neurológico (mock).",
+      "synonyms": [
+        "punção lombar"
+      ]
+    },
+    {
+      "code": "LAB-F0143",
+      "name": "IgE total",
+      "short_description": "Alergia / atopias.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0144",
+      "name": "Painel de alergénios alimentares (IgE específica)",
+      "short_description": "Alergia alimentar.",
+      "synonyms": [
+        "panel alergia"
+      ]
+    },
+    {
+      "code": "LAB-F0145",
+      "name": "Painel de alergénios inalatórios",
+      "short_description": "Asma/rinite (mock).",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0146",
+      "name": "Toxicológico urinário ampliado",
+      "short_description": "Detecção de drogas (screening).",
+      "synonyms": [
+        "tox urinario"
+      ]
+    },
+    {
+      "code": "LAB-F0147",
+      "name": "Etanol no sangue",
+      "short_description": "Alcoholémia.",
+      "synonyms": [
+        "blood alcohol",
+        "alcoolemia"
+      ]
+    },
+    {
+      "code": "LAB-F0148",
+      "name": "Carboxihemoglobina",
+      "short_description": "Intoxicação monóxido carbono.",
+      "synonyms": [
+        "COHb"
+      ]
+    },
+    {
+      "code": "LAB-F0149",
+      "name": "Metahemoglobina",
+      "short_description": "Intoxicações diversas.",
+      "synonyms": [
+        "MetHb"
+      ]
+    },
+    {
+      "code": "LAB-F0150",
+      "name": "Metalograma sangue (Pb, As, Cd)",
+      "short_description": "Exposição ocupacional (mock).",
+      "synonyms": [
+        "metais pesados"
+      ]
+    },
+    {
+      "code": "LAB-F0151",
+      "name": "Urocultura com Uriscreen automatizado",
+      "short_description": "Triagem rápida e cultura (mock).",
+      "synonyms": [
+        "URIS"
+      ]
+    },
+    {
+      "code": "LAB-F0152",
+      "name": "Sífilis — teste treponémico específico",
+      "short_description": "Confirmação de VDRL (mock).",
+      "synonyms": [
+        "FTA",
+        "treponemico"
+      ]
+    },
+    {
+      "code": "LAB-F0153",
+      "name": "Gestação — beta HCG urinário qualitativo",
+      "short_description": "Teste rápido (mock).",
+      "synonyms": [
+        "gravidez urina"
+      ]
+    },
+    {
+      "code": "LAB-F0154",
+      "name": "Avaliação pré-natal básica",
+      "short_description": "Painel sintético (mock).",
+      "synonyms": [
+        "pré-natal"
+      ]
+    },
+    {
+      "code": "LAB-F0155",
+      "name": "Triagem metabólica neonatal ampliada",
+      "short_description": "Erros inatos (referência mock).",
+      "synonyms": [
+        "teste pezinho"
+      ]
+    },
+    {
+      "code": "LAB-F0156",
+      "name": "Eletroforese de hemoglobina",
+      "short_description": "Hemoglobinopatias.",
+      "synonyms": [
+        "Hb electro"
+      ]
+    },
+    {
+      "code": "LAB-F0157",
+      "name": "Teste de tolerância à lactose (genético)",
+      "short_description": "Intolerância (mock).",
+      "synonyms": [
+        "lactose genético"
+      ]
+    },
+    {
+      "code": "LAB-F0158",
+      "name": "PCR mutação F5 Leiden",
+      "short_description": "Trombofilia (mock).",
+      "synonyms": [
+        "F5 Leiden"
+      ]
+    },
+    {
+      "code": "LAB-F0159",
+      "name": "Anticoagulante lúpico",
+      "short_description": "Trombofilia.",
+      "synonyms": [
+        "LA",
+        "lupus anticoagulant"
+      ]
+    },
+    {
+      "code": "LAB-F0160",
+      "name": "Anticardiolipina IgG/IgM",
+      "short_description": "Síndrome antifosfolípido.",
+      "synonyms": []
+    },
+    {
+      "code": "LAB-F0161",
+      "name": "Autoanticorpos ANA",
+      "short_description": "Doenças reumatológicas.",
+      "synonyms": [
+        "FAN"
+      ]
+    },
+    {
+      "code": "LAB-F0162",
+      "name": "Fator reumatoide",
+      "short_description": "Artrite reumatóide.",
+      "synonyms": [
+        "FR"
+      ]
+    },
+    {
+      "code": "LAB-F0163",
+      "name": "Anti-CCP",
+      "short_description": "Artrite reumatóide (especifidade).",
+      "synonyms": [
+        "peptideo citrulinado"
+      ]
+    },
+    {
+      "code": "LAB-F0164",
+      "name": "Creatinoquinase — perfil muscular",
+      "short_description": "Distrofias (mock).",
+      "synonyms": [
+        "CK perfil"
+      ]
+    }
+  ]
+}

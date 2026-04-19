@@ -1,0 +1,59 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "title": "Assistente laboratorial (exemplo fictício)",
+    "description": "Especificação de exemplo para o fluxo: imagem → OCR → PII → RAG → agendamento → CLI."
+  },
+  "agent": {
+    "name": "lab_scheduler",
+    "app_name": "lab_exam_scheduler_kit",
+    "model": "gemini-2.5-flash",
+    "profile": "lab",
+    "instruction_key": "lab_example"
+  },
+  "tools": [
+    {
+      "id": "ocr_exams",
+      "kind": "mcp_sse",
+      "mcp_role": "ocr",
+      "description": "Extrai nomes de exames a partir da imagem do pedido médico."
+    },
+    {
+      "id": "rag_exam_codes",
+      "kind": "mcp_sse",
+      "mcp_role": "rag",
+      "description": "Consulta códigos e detalhes na base (≥100 exames, pode ser mock)."
+    },
+    {
+      "id": "schedule_appointment",
+      "kind": "http_json",
+      "description": "Submete agendamento à API FastAPI fictícia."
+    }
+  ],
+  "mcp_servers": {
+    "ocr": {
+      "sse_url": "http://localhost:3100/sse",
+      "timeout_seconds": 120
+    },
+    "rag": {
+      "sse_url": "http://localhost:3200/sse",
+      "timeout_seconds": 120
+    }
+  },
+  "scheduling_api": {
+    "base_url": "http://localhost:8000",
+    "create_path": "/api/v1/appointments",
+    "health_path": "/health"
+  },
+  "security": {
+    "pii": {
+      "enabled": true,
+      "apply_before_llm": true,
+      "apply_before_persist": true,
+      "note": "Mascarar nomes próprios, documentos e contactos extraídos do OCR antes de LLM e de qualquer persistência."
+    }
+  },
+  "cli": {
+    "output_mode": "human"
+  }
+}

@@ -1,0 +1,3 @@
+# Mínimo conceitual para rodar só o kit agent_action + ADK.
+# Para o ambiente completo (CLI, testes, MCP, API), use na raiz: pip install -r requirements.txt
+google-adk>=1.20.0
