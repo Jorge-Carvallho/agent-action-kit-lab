@@ -10,8 +10,11 @@ Esta pasta centraliza a documentacao da solucao por topicos.
 4. `05-uso-cli.md`
 5. `07-revisao-final-e-checklist.md`
 
+Para validar um **clone novo** sem adivinhar o próximo passo, use **`VALIDACAO_CLONE.md`**.
+
 ## Indice completo
 
+- `VALIDACAO_CLONE.md` - roteiro de validação após clone (esperado por passo)
 - `01-visao-geral.md` - escopo, objetivo e fluxo fim a fim
 - `02-arquitetura.md` - componentes, responsabilidades e integracoes
 - `03-execucao-docker-compose.md` - subir stack, validar estado e logs

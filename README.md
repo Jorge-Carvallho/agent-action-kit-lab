@@ -23,6 +23,7 @@ Para quem avalia a entrega: o planeamento e o mapeamento **card a card** (**AI-0
 ## Documentação complementar
 
 * [`docs/README.md`](docs/README.md) — índice da documentação por tópicos (arquitetura, Docker, transpilador, CLI, IA e revisão final)
+* [`docs/VALIDACAO_CLONE.md`](docs/VALIDACAO_CLONE.md) — validação em clone limpo (comando a comando)
 * `examples/AGENT_SPEC.md`
 * `runtime/agent_action/README.md`
 * `runtime/agent_action/HANDOFF.md`
@@ -85,6 +86,8 @@ python run_lab_cli.py examples/sample_prescription.png --dry-run
 ```
 
 Se esses comandos rodarem sem erro, o projeto está funcional e o fluxo OCR → RAG → API estará validado.
+
+Roteiro **passo a passo** (clone limpo, com o que esperar em cada comando): [`docs/VALIDACAO_CLONE.md`](docs/VALIDACAO_CLONE.md).
 
 ### Requisitos
 
