@@ -4,7 +4,7 @@ Guia curto (raiz do repositório): [`DEMO.md`](../DEMO.md)
 
 Este repositório tem **duas demos** no GitHub Actions, com objetivos diferentes:
 
-- **Demo “completa” (com POST na API)**: roda **somente quando alguém clica** em **Run workflow** (não dispara sozinha em push).
+- **Demo “completa” (com POST na API)**: roda **somente sob demanda** (via **Run workflow** ou **Re-run**/**Executar novamente** em um run existente) — **não dispara sozinha em push**.
 - **Demo “segura” (sem agendar)**: roda automaticamente em **push na branch `main`** (e também pode ser disparada manualmente via **Run workflow**, se você quiser repetir a evidência).
 
 > Observação: workflows novos costumam aparecer na UI do GitHub depois que o arquivo existe na branch default (`main`). Por isso o workflow “POST real” fica em `demo-full.yml` na `main`, mesmo que você desenvolva em outra branch.
@@ -43,16 +43,22 @@ O **Job Summary** aparece no topo da página do run (aba **Summary**), e costuma
 
 - tenta executar o fluxo até o **POST** na API de agendamento do ambiente do runner.
 
-### Onde clicar no GitHub (manual)
+### Onde clicar no GitHub (fluxo mais comum: reexecutar um run)
 
 1. Abra o repositório no GitHub
 2. Vá em **Actions**
 3. No menu esquerdo, clique em **`Demo full (tests + docker + POST)`**
-4. Clique em **Run workflow** (canto superior direito)
-5. Em **Use workflow from**, escolha a branch (normalmente **`main`**)
-6. Clique no botão verde **Run workflow**
-7. Abra o run que aparecer e entre no job **`demo-full`**
-8. Expanda o step **`Run CLI demo (POST real)`**
+4. Abra o **run mais recente** da lista
+5. No canto superior direito, clique em **Re-run all jobs**  
+   - Em português: **Executar novamente todos os trabalhos**
+6. Aguarde finalizar e entre no job **`demo-full`**
+7. Expanda o step **`Run CLI demo (POST real)`**
+
+### Primeira vez (se ainda não existir nenhum run)
+
+1. Ainda em **`Demo full (tests + docker + POST)`**, clique em **Run workflow**
+2. Em **Use workflow from**, escolha **`main`**
+3. Clique em **Run workflow**
 
 ### Artifact (opcional)
 
@@ -85,8 +91,9 @@ Roda, na ordem:
 2. Vá em **Actions**
 3. No menu esquerdo, clique em **`Demo (tests + docker + cli)`**
 4. Clique na execução mais recente com **✅ Success**
-5. Clique no job **`demo`**
-6. Expanda o step **`Run CLI demo (dry-run)`** para ver a saída completa
+5. (Opcional) Para repetir: **Re-run all jobs** / **Executar novamente todos os trabalhos**
+6. Clique no job **`demo`**
+7. Expanda o step **`Run CLI demo (dry-run)`** para ver a saída completa
 
 ### Artifact (opcional)
 
