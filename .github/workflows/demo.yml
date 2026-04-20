@@ -1,13 +1,15 @@
-name: Demo full (tests + docker + POST)
+name: Demo (tests + docker + cli)
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 on:
+  push:
+    branches: ["main"]
   workflow_dispatch: {}
 
 jobs:
-  demo-full:
+  demo:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +33,8 @@ jobs:
       - name: Build and start docker compose
         run: |
           docker compose up -d --build
-          mkdir -p demo-full-report
-          docker compose ps | tee demo-full-report/docker-compose.ps.txt
+          mkdir -p demo-report
+          docker compose ps | tee demo-report/docker-compose.ps.txt
 
       - name: Wait for services (health)
         shell: bash
@@ -63,26 +65,26 @@ jobs:
 
       - name: Health checks
         run: |
-          mkdir -p demo-full-report
-          curl -fsS http://127.0.0.1:8000/health | tee demo-full-report/health-api.json
+          mkdir -p demo-report
+          curl -fsS http://127.0.0.1:8000/health | tee demo-report/health-api.json
           echo
-          curl -fsS http://127.0.0.1:3100/health | tee demo-full-report/health-mcp-ocr.json
+          curl -fsS http://127.0.0.1:3100/health | tee demo-report/health-mcp-ocr.json
           echo
-          curl -fsS http://127.0.0.1:3200/health | tee demo-full-report/health-mcp-rag.json
+          curl -fsS http://127.0.0.1:3200/health | tee demo-report/health-mcp-rag.json
           echo
 
-      - name: Run CLI demo (POST real)
+      - name: Run CLI demo (dry-run)
         shell: bash
         run: |
           set -o pipefail
-          python run_lab_cli.py examples/sample_prescription.png | tee demo-full-report/demo-full-output.txt
+          python run_lab_cli.py examples/sample_prescription.png --dry-run | tee demo-report/demo-output.txt
 
       - name: Write GitHub Actions job summary
         if: success()
         shell: bash
         run: |
           {
-            echo "## Demo full (POST) — relatório rápido"
+            echo "## Demo (dry-run) — relatório rápido"
             echo
             echo "- **Workflow**: \`${{ github.workflow }}\`"
             echo "- **Run**: ${{ github.run_id }} (attempt ${{ github.run_attempt }})"
@@ -91,30 +93,30 @@ jobs:
             echo
             echo "### Health (JSON)"
             echo "\`\`\`json"
-            cat demo-full-report/health-api.json
+            cat demo-report/health-api.json
             echo "\`\`\`"
             echo "\`\`\`json"
-            cat demo-full-report/health-mcp-ocr.json
+            cat demo-report/health-mcp-ocr.json
             echo "\`\`\`"
             echo "\`\`\`json"
-            cat demo-full-report/health-mcp-rag.json
+            cat demo-report/health-mcp-rag.json
             echo "\`\`\`"
             echo
             echo "### CLI (trecho inicial)"
             echo "\`\`\`text"
-            head -n 60 demo-full-report/demo-full-output.txt || true
+            head -n 40 demo-report/demo-output.txt || true
             echo "\`\`\`"
             echo
             echo "### Artifact"
-            echo "Baixe **\`demo-full-report\`** (ZIP) na seção *Artifacts* deste run."
+            echo "Baixe **\`demo-report\`** (ZIP) na seção *Artifacts* deste run."
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload demo full report artifact
+      - name: Upload demo report artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: demo-full-report
-          path: demo-full-report/
+          name: demo-report
+          path: demo-report/
 
       - name: Docker logs on failure
         if: failure()

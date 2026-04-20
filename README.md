@@ -22,6 +22,7 @@ Para quem avalia a entrega: o planeamento e o mapeamento **card a card** (**AI-0
 
 ## Documentação complementar
 
+* [`DEMO.md`](DEMO.md) — **demo reproduzível no GitHub Actions** (passo a passo curto para avaliação)
 * [`docs/README.md`](docs/README.md) — índice da documentação por tópicos (arquitetura, Docker, transpilador, CLI, IA e revisão final)
 * [`docs/VALIDACAO_CLONE.md`](docs/VALIDACAO_CLONE.md) — validação em clone limpo (comando a comando)
 * `examples/AGENT_SPEC.md`

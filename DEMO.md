@@ -1,0 +1,73 @@
+# Demo reproduzível (GitHub Actions)
+
+Este documento é um **guia curto** para quem vai **avaliar a entrega no GitHub**, sem precisar rodar nada localmente.
+
+## Antes de começar (30 segundos de leitura)
+
+Quando você “rodar” aqui, o GitHub vai executar um **pipeline** (CI) em uma máquina temporária. Você vai ver, principalmente:
+
+- uma lista de passos (**steps**) com ✅ ou ❌
+- **logs** com o que aconteceu (testes, Docker subindo, saída da CLI)
+- opcionalmente **Artifacts** (arquivos ZIP) com um “pacote” do resultado
+
+O projeto demonstra um fluxo **OCR → RAG → API**. Em termos práticos:
+
+- **`--dry-run`**: roda o fluxo e mostra o resultado, **sem enviar** o agendamento (POST) na API.
+- **Sem `--dry-run`**: roda o fluxo e **envia** o agendamento para a API (dentro do ambiente do CI).
+
+## Vamos executar — Passo 1 (apertar e ver rodando)
+
+Objetivo: você mesmo dispara a execução e acompanha o resultado no GitHub.
+
+Workflow: **`Demo full (tests + docker + POST)`**
+
+- Dispara **somente** quando alguém clica em **Run workflow**.
+- Executa a CLI **sem `--dry-run`** (faz o **POST** na API do ambiente do runner).
+
+### Passo a passo (cliques)
+
+1. Aba **Actions**
+2. No menu esquerdo, clique em **`Demo full (tests + docker + POST)`**
+3. Clique em **Run workflow**
+4. Em **Use workflow from**, selecione **`main`**
+5. Clique no botão verde **Run workflow**
+6. Abra o run que apareceu
+7. Clique no job **`demo-full`**
+8. Expanda o step **`Run CLI demo (POST real)`** (é onde aparece o “resultado” do fluxo)
+
+### O que olhar sem baixar nada
+
+- Na página do run (aba **Summary**), procure o **Job Summary** gerado automaticamente.
+
+### Artefato (opcional)
+
+- Artifact **`demo-full-report`** (ZIP).
+
+## Passo 2 (opcional): evidência automática na `main` (sem POST)
+
+Workflow: **`Demo (tests + docker + cli)`**
+
+- Dispara em **push na branch `main`** e também pode ser executado manualmente via **Run workflow**.
+- Executa a CLI com **`--dry-run`** (não envia POST na API).
+
+### Passo a passo (cliques)
+
+1. Aba **Actions**
+2. No menu esquerdo, clique em **`Demo (tests + docker + cli)`**
+3. Abra o run com **✅ Success**
+4. Clique no job **`demo`**
+5. Expanda o step **`Run CLI demo (dry-run)`**
+
+### O que olhar sem baixar nada
+
+- Na página do run (aba **Summary**), procure o **Job Summary** gerado automaticamente.
+
+### Artefato (opcional)
+
+- Artifact **`demo-report`** (ZIP) com saída da CLI + JSONs de `/health` + `docker compose ps`.
+
+## Detalhes adicionais (opcional)
+
+Para uma versão mais detalhada do passo a passo (com mais contexto e checklist), veja:
+
+- [`docs/DEMO_GITHUB_ACTIONS.md`](docs/DEMO_GITHUB_ACTIONS.md)
