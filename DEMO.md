@@ -15,6 +15,17 @@ O projeto demonstra um fluxo **OCR → RAG → API**. Em termos práticos:
 - **`--dry-run`**: roda o fluxo e mostra o resultado, **sem enviar** o agendamento (POST) na API.
 - **Sem `--dry-run`**: roda o fluxo e **envia** o agendamento para a API (dentro do ambiente do CI).
 
+## Como saber em qual branch rodou (e por que às vezes não aparece “escolher branch”)
+
+Existem dois jeitos comuns de executar um workflow no GitHub:
+
+- **Automático por `push`**: quando alguém faz commit/push na `main`, o GitHub já sabe a branch. Por isso você vê **`Triggered via push`** e aparece um badge **`main`** ao lado do commit — **não tem** o menu “Use workflow from”.
+- **Manual (`Run workflow`)**: aí sim aparece o seletor de branch, porque você está escolhendo explicitamente de onde rodar.
+
+Se você clicar em **Re-run jobs**, o GitHub **repete o mesmo run** (na mesma branch/commit). Por isso também **não aparece** seletor: não é um disparo novo “do zero”.
+
+Dica: no **Job Summary** (aba **Summary**), normalmente aparece `Ref: refs/heads/main` — isso confirma a branch.
+
 ## Vamos executar — Passo 1 (apertar e ver rodando)
 
 Objetivo: você mesmo dispara a execução e acompanha o resultado no GitHub.

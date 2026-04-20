@@ -27,6 +27,12 @@ O **Job Summary** aparece no topo da página do run (aba **Summary**), e costuma
 - JSON dos `/health` (API + MCP OCR + MCP RAG)
 - um trecho inicial da saída da CLI (para leitura rápida)
 
+### `push` vs `Run workflow` vs `Re-run`
+
+- **`push`**: o GitHub mostra **“Triggered via push”** e um badge da branch (ex.: **`main`**). Não aparece seletor “Use workflow from”, porque a branch já está definida pelo commit.
+- **`Run workflow`**: aparece o seletor de branch, porque o disparo é manual.
+- **`Re-run`**: repete o mesmo contexto (branch/commit) do run anterior — por isso também **não** mostra seletor.
+
 ---
 
 ## 2) Demo completa (com POST) — `Demo full (tests + docker + POST)`
