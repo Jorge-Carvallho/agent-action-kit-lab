@@ -1,0 +1,93 @@
+name: Demo full (tests + docker + POST)
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  demo-full:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: |
+          python run_tests.py
+
+      - name: Build and start docker compose
+        run: |
+          docker compose up -d --build
+          docker compose ps
+
+      - name: Wait for services (health)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          wait_http() {
+            local url="$1"
+            local name="$2"
+            local deadline=$((SECONDS + 180))
+
+            echo "Waiting for ${name} (${url})..."
+            while (( SECONDS < deadline )); do
+              if curl -fsS --max-time 2 "$url" >/dev/null; then
+                echo "${name} is up."
+                return 0
+              fi
+              sleep 2
+            done
+
+            echo "Timed out waiting for ${name} (${url})" >&2
+            return 1
+          }
+
+          wait_http "http://127.0.0.1:8000/health" "API"
+          wait_http "http://127.0.0.1:3100/health" "MCP OCR"
+          wait_http "http://127.0.0.1:3200/health" "MCP RAG"
+
+      - name: Health checks
+        run: |
+          curl -fsS http://127.0.0.1:8000/health
+          echo
+          curl -fsS http://127.0.0.1:3100/health
+          echo
+          curl -fsS http://127.0.0.1:3200/health
+          echo
+
+      - name: Run CLI demo (POST real)
+        run: |
+          python run_lab_cli.py examples/sample_prescription.png | tee demo-full-output.txt
+
+      - name: Upload demo output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-full-output
+          path: demo-full-output.txt
+
+      - name: Docker logs on failure
+        if: failure()
+        run: |
+          docker compose ps
+          docker compose logs api --tail 200
+          docker compose logs mcp-ocr --tail 200
+          docker compose logs mcp-rag --tail 200
+
+      - name: Shutdown docker compose
+        if: always()
+        run: |
+          docker compose down
